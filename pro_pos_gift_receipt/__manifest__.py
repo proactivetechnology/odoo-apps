@@ -6,26 +6,25 @@
     "license": "LGPL-3",
     "author": "ProActive Technology",
     "maintainer": "Muhamed Ayman",
-    "depends": ["point_of_sale"],
+
+    "depends": [
+        "point_of_sale"
+    ],
+
     "data": [
         "views/pos_config_view.xml"
     ],
+
     "assets": {
         "point_of_sale._assets_pos": [
             "pro_pos_gift_receipt/static/src/js/gift_receipt.js",
             "pro_pos_gift_receipt/static/src/xml/gift_receipt_button.xml"
         ]
     },
-    "images": [
-        "static/description/main_screenshot.png",
-        "static/description/access_screenshot.png",
-        "static/description/pos_screenshot.png",
-        "static/description/print_screenshot.png",
-        "static/description/receipt_screenshot.png",
-        "static/description/after_paid_screenshot.png",
-    ],
+
     "price": 19.99,
     "currency": "USD",
+
     "installable": True,
     "application": False
 }
