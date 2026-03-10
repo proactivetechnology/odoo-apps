@@ -22,6 +22,14 @@
         ]
     },
 
+    "images": [
+        "static/description/receipt_screenshot.png",
+        "static/description/pos_screenshot.png",
+        "static/description/print_screenshot.png",
+        "static/description/access_screenshot.png",
+        "static/description/after_paid_screenshot.png"
+    ],
+
     "price": 19.99,
     "currency": "USD",
 
