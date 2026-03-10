@@ -17,7 +17,6 @@
         ]
     },
     "images": [
-        "static/description/cover.png",
         "static/description/access_screenshot.png",
         "static/description/pos_screenshot.png",
         "static/description/print_screenshot.png",
