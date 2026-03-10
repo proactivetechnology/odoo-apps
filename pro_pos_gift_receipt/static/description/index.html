@@ -5,139 +5,410 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POS Gift Receipt (Qty Only)</title>
     <style>
+        :root {
+            --primary: #6f42c1;
+            --primary-dark: #4b2e83;
+            --secondary: #f4f6fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --white: #ffffff;
+            --success: #16a34a;
+            --border: #e5e7eb;
+            --shadow: 0 14px 35px rgba(15, 23, 42, 0.10);
+            --radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f7f9fc;
-            color: #222;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #f7f8fc 0%, #eef2f9 100%);
+            color: var(--text);
         }
-        .wrapper {
-            max-width: 960px;
+
+        .container {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 32px 20px 50px;
         }
+
         .hero {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            overflow: hidden;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #5f2eea 0%, #7c3aed 45%, #2563eb 100%);
+            box-shadow: var(--shadow);
+            color: var(--white);
+            margin-bottom: 24px;
+        }
+
+        .hero-cover img {
+            width: 100%;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .hero-content {
+            padding: 34px 34px 30px;
+        }
+
+        .badge-row {
+            margin-bottom: 14px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.14);
             color: #fff;
-            border-radius: 18px;
-            padding: 36px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border: 1px solid rgba(255,255,255,0.18);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-bottom: 8px;
         }
+
         .hero h1 {
-            margin: 0 0 12px 0;
-            font-size: 34px;
+            margin: 0 0 14px;
+            font-size: 38px;
+            line-height: 1.15;
         }
+
         .hero p {
             margin: 0;
-            line-height: 1.7;
+            max-width: 840px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-top: 22px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+            border: 1px solid rgba(111, 66, 193, 0.06);
+        }
+
+        .section h2 {
+            margin: 0 0 16px;
+            font-size: 28px;
+            color: var(--primary-dark);
+        }
+
+        .section p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .section + .section {
+            margin-top: 22px;
+        }
+
+        .feature-grid,
+        .info-grid,
+        .shot-grid {
+            display: grid;
+            gap: 18px;
+        }
+
+        .feature-grid {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            margin-top: 18px;
+        }
+
+        .info-grid {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            margin-top: 18px;
+        }
+
+        .shot-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            margin-top: 18px;
+        }
+
+        .card {
+            background: #fbfcff;
+            border: 1px solid #e7eaf3;
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+            color: var(--primary-dark);
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        ul.clean {
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.95;
+            color: var(--text);
             font-size: 16px;
         }
-        .section {
-            background: #fff;
-            margin-top: 24px;
+
+        ul.clean li + li {
+            margin-top: 6px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f7f1ff 0%, #eef4ff 100%);
+            border: 1px solid #e6ddff;
             border-radius: 18px;
-            padding: 28px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            padding: 22px;
+            margin-top: 18px;
         }
-        h2 {
-            margin-top: 0;
-            color: #1f3c88;
+
+        .highlight-box strong {
+            color: var(--primary-dark);
         }
-        ul {
-            line-height: 1.9;
-            padding-left: 22px;
+
+        .shot {
+            border-radius: 18px;
+            overflow: hidden;
+            background: #fff;
+            border: 1px solid var(--border);
+            box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
         }
-        .meta {
+
+        .shot img {
+            width: 100%;
+            display: block;
+        }
+
+        .shot-caption {
+            padding: 14px 16px;
+            font-size: 14px;
+            color: var(--muted);
+            background: #fff;
+        }
+
+        .author-box {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+            margin-top: 18px;
         }
-        .card {
-            background: #f5f7ff;
-            border: 1px solid #e3e9ff;
-            border-radius: 14px;
-            padding: 16px;
+
+        .author-card {
+            background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+            border: 1px solid #e8edf7;
+            border-radius: 18px;
+            padding: 22px;
         }
+
+        .author-card h3 {
+            margin: 0 0 10px;
+            color: var(--primary-dark);
+            font-size: 18px;
+        }
+
+        .author-card p {
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--muted);
+        }
+
         .footer {
             text-align: center;
-            color: #555;
-            padding: 20px 0 10px;
+            color: var(--muted);
             font-size: 14px;
+            padding: 24px 10px 10px;
         }
-        strong.label {
-            color: #111;
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 24px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .section {
+                padding: 22px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="container">
+
         <div class="hero">
-            <h1>POS Gift Receipt (Qty Only)</h1>
-            <p>
-                A professional Odoo 18 Point of Sale module that enables printing a clean
-                gift receipt containing only product names and quantities, without exposing
-                prices, taxes, discounts, or totals.
-            </p>
+            <div class="hero-cover">
+                <img src="cover.png" alt="POS Gift Receipt Cover">
+            </div>
+            <div class="hero-content">
+                <div class="badge-row">
+                    <span class="badge">Odoo 18</span>
+                    <span class="badge">Point of Sale</span>
+                    <span class="badge">Gift Receipt</span>
+                    <span class="badge">OWL Compatible</span>
+                </div>
+                <h1>POS Gift Receipt (Qty Only)</h1>
+                <p>
+                    A professional Odoo 18 Point of Sale extension that allows businesses to print a clean
+                    gift receipt containing only product names and quantities — without prices, taxes,
+                    discounts, or totals. Perfect for retail shops that want a polished gifting experience
+                    while preserving the standard POS flow.
+                </p>
+            </div>
         </div>
 
         <div class="section">
-            <h2>Overview</h2>
+            <h2>Module Overview</h2>
             <p>
-                <strong>POS Gift Receipt (Qty Only)</strong> is designed for retail businesses
-                that want to provide customers with a separate gift receipt after payment.
-                The printed receipt is simplified and suitable for gifting scenarios where
-                pricing details should remain hidden.
+                <strong>POS Gift Receipt (Qty Only)</strong> adds a practical gifting feature to the Odoo POS
+                workflow. After payment, the cashier can print a dedicated gift receipt for the customer.
+                This receipt intentionally hides all financial values and keeps the output simple,
+                clean, and gift-friendly.
             </p>
+
+            <div class="highlight-box">
+                <p>
+                    <strong>Business Value:</strong> Improve customer experience in retail and gifting scenarios
+                    by offering a second receipt that protects pricing privacy while keeping the order details clear.
+                </p>
+            </div>
         </div>
 
         <div class="section">
             <h2>Key Features</h2>
-            <ul>
-                <li>Adds an option in POS Configuration to enable or disable Gift Receipt.</li>
-                <li>Displays a <strong>Gift Receipt</strong> button in the POS Receipt Screen after payment.</li>
-                <li>Prints a simplified receipt containing only:
-                    <ul>
-                        <li>Product Name</li>
-                        <li>Quantity</li>
-                    </ul>
-                </li>
-                <li>No prices, taxes, discounts, or totals.</li>
-                <li>Compatible with <strong>Odoo 18 POS OWL</strong>.</li>
-                <li>Preserves the default receipt flow without breaking the original receipt screen.</li>
+            <div class="feature-grid">
+                <div class="card">
+                    <h3>POS Configuration Option</h3>
+                    <p>Enable or disable the Gift Receipt feature directly from POS settings.</p>
+                </div>
+                <div class="card">
+                    <h3>Receipt Screen Integration</h3>
+                    <p>Adds a Gift Receipt button to the POS receipt screen after payment.</p>
+                </div>
+                <div class="card">
+                    <h3>Qty-Only Output</h3>
+                    <p>Prints only product names and quantities without exposing any pricing details.</p>
+                </div>
+                <div class="card">
+                    <h3>Safe POS Flow</h3>
+                    <p>Preserves the standard Odoo 18 POS receipt flow without breaking the original receipt process.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What the Gift Receipt Includes</h2>
+            <ul class="clean">
+                <li>Product Name</li>
+                <li>Quantity</li>
+            </ul>
+
+            <h2 style="margin-top:24px;">What the Gift Receipt Excludes</h2>
+            <ul class="clean">
+                <li>Prices</li>
+                <li>Discounts</li>
+                <li>Taxes</li>
+                <li>Totals</li>
+                <li>Financial values of any kind</li>
             </ul>
         </div>
 
         <div class="section">
             <h2>Use Cases</h2>
-            <ul>
-                <li>Gift purchases in retail stores.</li>
+            <ul class="clean">
+                <li>Retail stores selling products intended as gifts.</li>
                 <li>Shops that want to hide item prices from gift recipients.</li>
-                <li>Businesses that need a clean and professional gift receipt experience.</li>
+                <li>Businesses that need a clean and professional secondary receipt after payment.</li>
+                <li>Stores looking to enhance customer satisfaction with a premium POS experience.</li>
             </ul>
         </div>
 
         <div class="section">
             <h2>Technical Information</h2>
-            <div class="meta">
-                <div class="card"><strong class="label">Compatibility:</strong><br>Odoo 18</div>
-                <div class="card"><strong class="label">Module Type:</strong><br>POS Extension</div>
-                <div class="card"><strong class="label">Frontend:</strong><br>OWL Components</div>
-                <div class="card"><strong class="label">Receipt Type:</strong><br>Qty Only Gift Receipt</div>
+            <div class="info-grid">
+                <div class="card">
+                    <h3>Compatibility</h3>
+                    <p>Odoo 18</p>
+                </div>
+                <div class="card">
+                    <h3>Application Area</h3>
+                    <p>Point of Sale</p>
+                </div>
+                <div class="card">
+                    <h3>Frontend Framework</h3>
+                    <p>OWL Components</p>
+                </div>
+                <div class="card">
+                    <h3>Receipt Type</h3>
+                    <p>Gift Receipt - Quantity Only</p>
+                </div>
             </div>
         </div>
 
         <div class="section">
-            <h2>Author</h2>
-            <p>
-                <strong>Author:</strong> ProActive Technology<br>
-                <strong>Written by:</strong> Muhamed Ayman
-            </p>
+            <h2>Screenshots</h2>
+            <div class="shot-grid">
+                <div class="shot">
+                    <img src="access_screenshot.png" alt="Gift receipt feature access">
+                    <div class="shot-caption">Gift receipt option available from POS configuration.</div>
+                </div>
+                <div class="shot">
+                    <img src="pos_screenshot.png" alt="POS interface screenshot">
+                    <div class="shot-caption">Smooth integration inside the Odoo POS workflow.</div>
+                </div>
+                <div class="shot">
+                    <img src="print_screenshot.png" alt="Print flow screenshot">
+                    <div class="shot-caption">Dedicated Gift Receipt printing action after payment.</div>
+                </div>
+                <div class="shot">
+                    <img src="receipt_screenshot.png" alt="Receipt screenshot">
+                    <div class="shot-caption">Clean printed gift receipt with product names and quantities only.</div>
+                </div>
+                <div class="shot">
+                    <img src="after_paid_screenshot.png" alt="After paid receipt screen">
+                    <div class="shot-caption">Professional post-payment experience for retail gift scenarios.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Author & Support</h2>
+            <div class="author-box">
+                <div class="author-card">
+                    <h3>Author</h3>
+                    <p>
+                        <strong>ProActive Technology</strong><br>
+                        Professional Odoo solutions and business-focused custom modules.
+                    </p>
+                </div>
+                <div class="author-card">
+                    <h3>Written By</h3>
+                    <p>
+                        <strong>Muhamed Ayman</strong><br>
+                        Odoo Technical Consultant and custom business app developer.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
             Professional Odoo 18 POS Extension by ProActive Technology
         </div>
+
     </div>
 </body>
 </html>
