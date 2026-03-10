@@ -18,6 +18,11 @@
     },
     "images": [
         "static/description/cover.png",
+        "static/description/screenshot1.png",
+        "static/description/screenshot2.png",
+        "static/description/screenshot3.png",
+        "static/description/screenshot4.png",
+        "static/description/screenshot5.png",
     ],
     "price": 19.99,
     "currency": "USD",
