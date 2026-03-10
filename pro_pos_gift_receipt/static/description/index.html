@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Gift Receipt (Qty Only)</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f7f9fc;
+            color: #222;
+        }
+        .wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            border-radius: 18px;
+            padding: 36px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+        .hero h1 {
+            margin: 0 0 12px 0;
+            font-size: 34px;
+        }
+        .hero p {
+            margin: 0;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        .section {
+            background: #fff;
+            margin-top: 24px;
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        h2 {
+            margin-top: 0;
+            color: #1f3c88;
+        }
+        ul {
+            line-height: 1.9;
+            padding-left: 22px;
+        }
+        .meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .card {
+            background: #f5f7ff;
+            border: 1px solid #e3e9ff;
+            border-radius: 14px;
+            padding: 16px;
+        }
+        .footer {
+            text-align: center;
+            color: #555;
+            padding: 20px 0 10px;
+            font-size: 14px;
+        }
+        strong.label {
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="hero">
+            <h1>POS Gift Receipt (Qty Only)</h1>
+            <p>
+                A professional Odoo 18 Point of Sale module that enables printing a clean
+                gift receipt containing only product names and quantities, without exposing
+                prices, taxes, discounts, or totals.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Overview</h2>
+            <p>
+                <strong>POS Gift Receipt (Qty Only)</strong> is designed for retail businesses
+                that want to provide customers with a separate gift receipt after payment.
+                The printed receipt is simplified and suitable for gifting scenarios where
+                pricing details should remain hidden.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Adds an option in POS Configuration to enable or disable Gift Receipt.</li>
+                <li>Displays a <strong>Gift Receipt</strong> button in the POS Receipt Screen after payment.</li>
+                <li>Prints a simplified receipt containing only:
+                    <ul>
+                        <li>Product Name</li>
+                        <li>Quantity</li>
+                    </ul>
+                </li>
+                <li>No prices, taxes, discounts, or totals.</li>
+                <li>Compatible with <strong>Odoo 18 POS OWL</strong>.</li>
+                <li>Preserves the default receipt flow without breaking the original receipt screen.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Use Cases</h2>
+            <ul>
+                <li>Gift purchases in retail stores.</li>
+                <li>Shops that want to hide item prices from gift recipients.</li>
+                <li>Businesses that need a clean and professional gift receipt experience.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Technical Information</h2>
+            <div class="meta">
+                <div class="card"><strong class="label">Compatibility:</strong><br>Odoo 18</div>
+                <div class="card"><strong class="label">Module Type:</strong><br>POS Extension</div>
+                <div class="card"><strong class="label">Frontend:</strong><br>OWL Components</div>
+                <div class="card"><strong class="label">Receipt Type:</strong><br>Qty Only Gift Receipt</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Author</h2>
+            <p>
+                <strong>Author:</strong> ProActive Technology<br>
+                <strong>Written by:</strong> Muhamed Ayman
+            </p>
+        </div>
+
+        <div class="footer">
+            Professional Odoo 18 POS Extension by ProActive Technology
+        </div>
+    </div>
+</body>
+</html>

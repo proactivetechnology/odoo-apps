@@ -1,0 +1,35 @@
+POS Gift Receipt (Qty Only)
+
+Professional Odoo 18 Point of Sale module for printing a simplified Gift Receipt.
+
+Overview:
+This module adds an optional Gift Receipt feature to Odoo 18 POS. After payment,
+the cashier can print a gift receipt that contains only:
+- Product Name
+- Quantity
+
+The gift receipt intentionally hides:
+- Prices
+- Taxes
+- Discounts
+- Totals
+
+Key Features:
+- Enable/disable Gift Receipt from POS Configuration
+- Show Gift Receipt button on Receipt Screen
+- Print clean Qty-only receipt
+- Compatible with Odoo 18 POS OWL
+- Safe receipt flow without breaking original receipt rendering
+
+Use Cases:
+- Gift purchases
+- Retail stores
+- Hidden pricing scenarios
+
+Technical Information:
+- Compatible with Odoo 18
+- Module Type: POS Extension
+- Frontend: OWL POS Components
+
+Author: ProActive Technology
+Written by: Muhamed Ayman

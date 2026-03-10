@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pro_pos_gift_receipt.ReceiptScreenGiftReceiptButton" t-inherit="point_of_sale.ReceiptScreen" t-inherit-mode="extension">
+        <xpath expr="(//button[contains(@t-on-click, 'doFullPrint') or contains(@t-on-click, 'print') or contains(@t-on-click, 'Print')])[1]" position="after">
+            <button t-if="showGiftReceiptButton" class="button btn btn-secondary ms-2 o_pro_pos_gift_receipt_btn" t-on-click="onClickGiftReceipt">
+                <i class="fa fa-gift me-1"/>
+                Gift Receipt
+            </button>
+        </xpath>
+    </t>
+
+    <t t-name="pro_pos_gift_receipt.TicketScreenGiftReceiptButton" t-inherit="point_of_sale.TicketScreen" t-inherit-mode="extension">
+        <xpath expr="(//button[contains(@t-on-click, 'print') or contains(normalize-space(.), 'Print Receipt')])[1]" position="after">
+            <button t-if="showGiftReceiptTicketButton" class="button btn btn-light ms-2 o_pro_pos_gift_receipt_ticket_btn" t-on-click="onClickGiftReceiptTicket">
+                <i class="fa fa-gift me-1"/>
+                Gift Receipt
+            </button>
+        </xpath>
+    </t>
+
+    <t t-name="pro_pos_gift_receipt.GiftReceipt">
+        <div class="pos-receipt" style="width: 302px; margin: 0 auto; color: #111; font-size: 12px; line-height: 1.35; font-family: Arial, sans-serif;">
+            <t t-if="props.data.logo_src">
+                <div style="text-align: center; margin-bottom: 8px;">
+                    <img t-att-src="props.data.logo_src" alt="logo" style="max-width: 130px; max-height: 60px; object-fit: contain;"/>
+                </div>
+            </t>
+
+            <div style="text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.3px;">
+                <t t-esc="props.data.company_name"/>
+            </div>
+            <div style="text-align: center; font-size: 12px; margin-top: 2px; margin-bottom: 10px;">
+                <t t-esc="props.data.shop_name"/>
+            </div>
+
+            <div style="text-align: center; font-size: 14px; font-weight: 700; margin: 6px 0;">Gift Receipt</div>
+            <div style="text-align: center; margin: 2px 0;">
+                <span>Order: </span><t t-esc="props.data.order_name"/>
+            </div>
+            <div style="text-align: center; margin: 2px 0 6px;">
+                <span>Date: </span><t t-esc="props.data.order_date"/>
+            </div>
+
+            <div style="border-top: 1px solid #bdbdbd; margin: 8px 0;"></div>
+
+            <table style="width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 12px;">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; width: 82%; padding: 5px 8px 5px 0; border-bottom: 1px solid #bdbdbd;">Product</th>
+                        <th style="text-align: right; width: 18%; padding: 5px 0; border-bottom: 1px solid #bdbdbd; white-space: nowrap;">Qty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="props.data.lines" t-as="line" t-key="line_index">
+                        <tr>
+                            <td style="text-align: left; padding: 5px 8px 5px 0; word-break: break-word; vertical-align: top;">
+                                <t t-esc="line.product_name"/>
+                            </td>
+                            <td style="text-align: right; padding: 5px 0; white-space: nowrap; vertical-align: top;">
+                                <t t-esc="line.qty"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+
+            <div style="border-top: 1px solid #bdbdbd; margin: 8px 0;"></div>
+            <div style="text-align: center; margin: 4px 0;">Thank you for your purchase</div>
+            <div style="text-align: center; margin: 4px 0;">Items may be exchanged according to store policy</div>
+            <div style="border-top: 1px solid #bdbdbd; margin: 8px 0;"></div>
+        </div>
+    </t>
+</templates>
