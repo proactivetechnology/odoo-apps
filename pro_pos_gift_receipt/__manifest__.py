@@ -16,6 +16,9 @@
             "pro_pos_gift_receipt/static/src/xml/gift_receipt_button.xml"
         ]
     },
+    "images": [
+        "static/description/cover.png",
+    ],
     "price": 19.99,
     "currency": "USD",
     "installable": True,
