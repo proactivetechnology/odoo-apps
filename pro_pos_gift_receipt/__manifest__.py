@@ -23,6 +23,7 @@
     },
 
     "images": [
+        "static/description/main_screenshot.png",
         "static/description/receipt_screenshot.png",
         "static/description/pos_screenshot.png",
         "static/description/print_screenshot.png",
